@@ -4,6 +4,7 @@ var units = {
 	Unit.Team.PLAYER: 0,
 	Unit.Team.AI: 0
 }
+@onready var end_screen = $CanvasLayer/EndScreen
 
 func _ready():
 	for unit in get_tree().get_nodes_in_group("Unit"):
@@ -31,4 +32,4 @@ func check_win_condition():
 		return
 	
 	var team_name = Unit.Team.keys()[winner]
-	print(team_name + " team has won!")
+	end_screen.set_screen(team_name)

@@ -6,11 +6,16 @@
 [ext_resource type="Script" uid="uid://dmqmvt5r7g6k0" path="res://Scripts/unit_controller.gd" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://y1achd2w8bp2" path="res://Scripts/camera_controller.gd" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://cf1vvqbbwem88" path="res://Scenes/unit_ai.tscn" id="4_jjvhh"]
+[ext_resource type="Script" uid="uid://dnayngirhuvp3" path="res://Scripts/end_screen.gd" id="7_344ge"]
+[ext_resource type="FontFile" uid="uid://bcyeh5velv3qt" path="res://Assets/SuperPixel-m2L8j.ttf" id="8_ynf5e"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lfxu0"]
 vertices = PackedVector2Array(24, 74, 230.95313, 102, -230, 102, -24, 74, 136, 26, 88, 26, 230.04688, -84, 136, -23, 24, 25, 24, -22, 24, -71, 88, -23, -24, -22, -88, 26, -88, -23, -24, 25, -136, 26, -230, -84, -136, -23, -24, -71)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 1, 0, 5), PackedInt32Array(6, 1, 4, 7), PackedInt32Array(5, 0, 8), PackedInt32Array(9, 10, 11, 5), PackedInt32Array(9, 5, 8, 12), PackedInt32Array(13, 14, 15, 3), PackedInt32Array(13, 3, 2, 16), PackedInt32Array(16, 2, 17, 18), PackedInt32Array(12, 8, 15, 14), PackedInt32Array(19, 12, 14), PackedInt32Array(7, 11, 10, 6), PackedInt32Array(17, 6, 10, 19), PackedInt32Array(18, 17, 19, 14)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-240, -94, 240, -94, 241, 112, -240, 112)])
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifmiu"]
+bg_color = Color(0.30425897, 0.68790126, 0.4883895, 1)
 
 [node name="Main" type="Node2D" unique_id=21258402]
 script = ExtResource("1_21xkr")
@@ -75,3 +80,50 @@ position = Vector2(80, 58)
 position = Vector2(73, -41)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=927328106]
+
+[node name="EndScreen" type="Panel" parent="CanvasLayer" unique_id=741877813]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ifmiu")
+script = ExtResource("7_344ge")
+
+[node name="Container" type="VBoxContainer" parent="CanvasLayer/EndScreen" unique_id=992998283]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.5
+offset_top = -20.0
+offset_right = 180.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HeaderText" type="Label" parent="CanvasLayer/EndScreen/Container" unique_id=679198024]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("8_ynf5e")
+theme_override_font_sizes/font_size = 51
+text = "PLAYER team has won!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton" type="Button" parent="CanvasLayer/EndScreen/Container" unique_id=585609528]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_position = Vector2(0, 40)
+theme_override_fonts/font = ExtResource("8_ynf5e")
+theme_override_font_sizes/font_size = 40
+text = "MENU"
+
+[connection signal="pressed" from="CanvasLayer/EndScreen/Container/MenuButton" to="CanvasLayer/EndScreen" method="_on_menu_button_pressed"]
