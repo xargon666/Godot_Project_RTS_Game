@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c2wh7g2a1pp0d"]
+
+[ext_resource type="Script" uid="uid://b31783twcq7nj" path="res://Scripts/global_audio_steam.gd" id="1_a0seo"]
+
+[node name="GlobalAudioManager" type="Node" unique_id=947756821]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2052940075]
+script = ExtResource("1_a0seo")

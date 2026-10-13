@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c40trfpjsushy"]
+
+[ext_resource type="PackedScene" uid="uid://dy8s0sybuxmec" path="res://Scenes/unit_base.tscn" id="1_mlbbb"]
+[ext_resource type="Script" uid="uid://ex3j5mfmnk1l" path="res://Scripts/player_unit.gd" id="2_66hmh"]
+
+[sub_resource type="Gradient" id="Gradient_mlbbb"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 1.2073967, 0.50821364, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hjb8m"]
+gradient = SubResource("Gradient_mlbbb")
+
+[node name="Unit_Player" unique_id=1381474944 groups=["UnitPlayer"] instance=ExtResource("1_mlbbb")]
+move_speed = 30.0
+cur_hp = 40
+max_hp = 40
+team = 0
+
+[node name="PlayerUnit" type="Node2D" parent="." index="0" unique_id=418689142]
+position = Vector2(-10, -14)
+scale = Vector2(0.1, 0.1)
+script = ExtResource("2_66hmh")
+
+[node name="SelectionVisual" type="Sprite2D" parent="." index="1" unique_id=644643424]
+visible = false
+position = Vector2(-9.536743e-07, 7.40625)
+scale = Vector2(0.078125, 4.8124976)
+texture = SubResource("GradientTexture1D_hjb8m")
+
+[node name="AudioStreamPlayer" parent="." index="6" unique_id=1225848723]
+volume_db = -1.0

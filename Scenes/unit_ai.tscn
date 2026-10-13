@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cf1vvqbbwem88"]
+
+[ext_resource type="PackedScene" uid="uid://dy8s0sybuxmec" path="res://Scenes/unit_base.tscn" id="1_iesgf"]
+[ext_resource type="Script" uid="uid://cvi7y7juqfqjk" path="res://Scripts/unit_ai.gd" id="2_gu8n8"]
+[ext_resource type="Texture2D" uid="uid://d1e2hwfuyqejh" path="res://Sprites/Characters/tile_0109.png" id="2_t8do7"]
+[ext_resource type="AudioStream" uid="uid://dky0fmrorfxel" path="res://Audio/death_enemy_1.wav" id="4_ao4f7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t8do7"]
+radius = 8.0
+
+[node name="Unit_Ai" unique_id=1381474944 groups=["UnitAi"] instance=ExtResource("1_iesgf")]
+attack_range = 30.0
+attack_rate = 0.7
+
+[node name="AI" type="Node" parent="." index="0" unique_id=174566731 groups=["Unit", "UnitAi"]]
+script = ExtResource("2_gu8n8")
+
+[node name="Sprite" parent="." index="1" unique_id=1121961018]
+texture = ExtResource("2_t8do7")
+
+[node name="CollisionShape2D" parent="." index="2" unique_id=1622425759]
+shape = SubResource("CircleShape2D_t8do7")
+
+[node name="AudioStreamPlayer" parent="." index="5" unique_id=1225848723]
+stream = ExtResource("4_ao4f7")

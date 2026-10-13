@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dy8s0sybuxmec"]
+
+[ext_resource type="Script" uid="uid://chm7walgh02m" path="res://Scripts/unit.gd" id="1_2vsbj"]
+[ext_resource type="Texture2D" uid="uid://bpgebaup8d8g8" path="res://Sprites/Characters/tile_0087.png" id="1_yagyl"]
+[ext_resource type="Script" uid="uid://wofcxbsul0ju" path="res://Scripts/unit_visual.gd" id="3_3wtx8"]
+[ext_resource type="Script" uid="uid://bpbjq0j4ds2ki" path="res://Scripts/unit_health_bar.gd" id="3_aj46g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lfxu0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfxu0"]
+bg_color = Color(0.18359044, 0.18359047, 0.18359032, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hjb8m"]
+bg_color = Color(1, 0.21960784, 0, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+
+[node name="Unit_Base" type="Area2D" unique_id=1381474944 groups=["Unit"]]
+script = ExtResource("1_2vsbj")
+move_speed = 20.0
+team = 1
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1121961018]
+position = Vector2(0, 8)
+texture = ExtResource("1_yagyl")
+offset = Vector2(0, -8)
+script = ExtResource("3_3wtx8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1622425759]
+shape = SubResource("CircleShape2D_lfxu0")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1009708637]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1974676969]
+offset_left = -10.0
+offset_top = -14.0
+offset_right = 190.0
+offset_bottom = 26.0
+scale = Vector2(0.1, 0.1)
+theme_override_styles/background = SubResource("StyleBoxFlat_lfxu0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hjb8m")
+value = 61.49
+show_percentage = false
+script = ExtResource("3_aj46g")
